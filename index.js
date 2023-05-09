@@ -63,7 +63,7 @@ $(function () {
             $("#appliquerGain").show();
         }
         else {
-            $("#divInsert").html('<h5 class="text-center font-weight-bold text-uppercase py-2">Félicitation, le transport est optimal</h5>');
+            $("#divInsert").html('<p class="text-center font-weight-bold text-uppercase py-2">Le transport est optimal</p>');
         }
 
     });
@@ -86,7 +86,7 @@ $(function () {
                             stop = true; // on sort de la boucle
                             break;
                         }
-                        if(isTheCorrectWayForLine(tableau, i, colonneActuel)) {
+                        if(isTheCorrectWayForLine(tableau, i, colonneActuel, row)) {
                             chemin.push({ligne: i, colonne: colonneActuel, value: tableau[i][colonneActuel], marque: '-'});
                             ligneActuel = i;
                             target = 'colonne';
@@ -105,6 +105,27 @@ $(function () {
             }
         }
         return chemin;
+    }
+
+    // Au cas où on doit, choisir entre différents chemin, cette fonction va nous permettre de trouver le bon pour la colonne
+    function isTheCorrectwayForColumn(table, ligne, colonne, finalRow) {
+        for(var i=0; i < table.length; i++) {
+            // On vérifie si on est déjà de retour à la case depart (on a terminé) ===>>> on verifie si la ligne correspond à la ligne de depart
+            if(i == finalRow && table[i][colonne] != 0) return true;
+            if(i != ligne && table[i][colonne] != 0)
+                if(isTheCorrectWayForLine(table, i, colonne, finalRow)) 
+                    return true;
+        }
+        return false;
+    }
+    // Au cas où on doit, choisir entre différents chemin, cette fonction va nous permettre de trouver le bon pour la ligne 
+    function isTheCorrectWayForLine(table, ligne,colonne, finalRow) {
+        for(var i=0; i < table[ligne].length; i++) {
+            if(i != colonne && table[ligne][i] != 0)
+                if(isTheCorrectwayForColumn(table, ligne, i, finalRow)) 
+                    return true;
+        }
+        return false;
     }
 
     // Recherche du minimum dans le marquage -
@@ -129,33 +150,18 @@ $(function () {
         return index;
     }
 
-    // Au cas où on doit, choisir entre différents chemin, cette fonction va nous permettre de trouver le bon pour la colonne
-    function isTheCorrectwayForColumn(table, ligne, colonne, finalRow) {
-        for(var i=0; i < table.length; i++) {
-            // On vérifie si on est déjà de retour à la case depart (on a terminé) ===>>> on verifie si la ligne correspond à la ligne de depart
-            if(i == finalRow && table[i][colonne] != 0) return true;
-            if(i != ligne && table[i][colonne] != 0) {
-                for(var j=0; j < table[i].length; j++) {
-                    if(j != colonne && table[i][j] != 0) return true;
-
-                }
-            }
-        }
-        return false;
-    }
-    // Au cas où on doit, choisir entre différents chemin, cette fonction va nous permettre de trouver le bon pour la ligne 
-    function isTheCorrectWayForLine(table, ligne,colonne) {
-        for(var i=0; i < table[ligne].length; i++) {
-            if(i != colonne && table[ligne][i] != 0) {
-                for(var j=0; j < table.length; j++) {
-                    if(j != ligne && table[j][i] != 0) return true;
-                }
-            }
-        }
-        return false;
-    }
-
     /************************************************* ///////////// \\\\\\\\\\\\\\ *********************************************/
+                    // CAS DEGENERES
+
+    function estUnCasDegenere(noeuds, table) {
+        var nombreLiens = 0;
+        for(var i=0; i < table.length; i++) {
+            for(var j=0; j < table[i].length; j++) {
+                if(table[i][j] != 0) nombreLiens++;
+            }
+        }
+        return (nombreLiens != noeuds.length-1);
+    }
 
 
     /****************** CODE POUR LE GRAPH EXECUTANT LE STEPPING STONE ********************/
@@ -165,9 +171,7 @@ $(function () {
         var nodeDataArray = [], linkDataArray = []; // ce sont les tableaux utilisés par gojs pour rendre la vue
         // On supprime d'abord son contenu puis on le reajoute pour eviter l'erreur durant la creation du diagram
         $("#graph-container").html("");
-        $("#graph-container").append('<div id="myGraph" style="width:100%; height:500px"> \
-        </div>');
-        
+        $("#graph-container").append('<div id="myGraph" style="width:100%; height:500px"></div>');
         var diagram = $$(go.Diagram, "myGraph");
         diagram.nodeTemplate = $$(go.Node, "Auto",
                                     { locationSpot: go.Spot.Center },
@@ -193,18 +197,19 @@ $(function () {
                                 );
 
         nodeDataArray = ObtenirLesTitresDuTableau(array1, array2);
-        
-        creerLesLiensEtMettreAJourLesValeursDesNoeuds(baseSolutionTable, nodeDataArray, linkDataArray, array1, array2);
+        if(!estUnCasDegenere(nodeDataArray, baseSolutionTable)) {
+            creerLesLiensEtMettreAJourLesValeursDesNoeuds(baseSolutionTable, nodeDataArray, linkDataArray, array1, array2);
 
-        diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
-        noeuds = [...nodeDataArray];    // On copie la valeur de nodeDataArray dans la variable principale noeud 
-
-        $("#getGraphBtn").hide();
-        $("#calculGainBtn").show();
+            diagram.model = new go.GraphLinksModel(nodeDataArray, linkDataArray);
+            noeuds = [...nodeDataArray];    // On copie la valeur de nodeDataArray dans la variable principale noeud 
+            
+            $("#getGraphBtn").hide();
+            $("#calculGainBtn").show();
+        }
+        else alert('cas dégéneré');
     });
 
     function creerLesLiensEtMettreAJourLesValeursDesNoeuds (baseSolutionTable, nodeDataArray, linkDataArray, enteteHorizontale, enteteVerticale) {
-        
         // Remplir le tableau linkDataArray pour lier les noeuds
         for(var i=0; i < baseSolutionTable.length; i++) {
             for(var j=0; j < baseSolutionTable[i].length; j++) {
@@ -257,8 +262,6 @@ $(function () {
                 }
             }
         }
-        // console.log(nodeDataArray);
-        // console.log(linkDataArray);
     }
 
     // Receuille la liste des noeuds dans deux tableaux différents

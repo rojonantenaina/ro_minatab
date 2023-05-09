@@ -5,24 +5,24 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Transshipment problem</title>
+  <title>Probleme de transport</title>
   <!-- Bootstrap core CSS -->
   <link href="./static/css/bootstrap.min.css" rel="stylesheet">
   <!-- Your custom styles (optional) -->
   <link href="./static/css/style.css" rel="stylesheet">
 </head>
 
-<body data-spy="scroll" data-target="#showListeGains">
-  <div class="mx-auto" style="width: 98%; background-color: rgba(86,61,124,.15);">
+<body data-spy="scroll" data-target="#showListeGains" style="background-color: rgb(135, 117, 117);">
+  <div class="mx-auto my-5" style="width: 90%; background-color: rgba(111, 25, 240, 0.15);">
     <div class="card">
-      <h5 class="card-header text-center font-weight-bold text-uppercase py-2">Problème de transport</h5>
+      <p class="card-header bg-success text-white text-center font-weight-bold text-uppercase py-2">Problème de transport</p>
       <div class="card-body row">
 
         <div id="table" class="table-responsive col-lg-3">
 
-          <table name="initialTable"  id="initialTable" class="table table-bordered table-responsive-sm text-center">
+          <table name="initialTable"  id="initialTable" class="table table-bordered table-responsive-xl text-center">
             <thead>
-              <tr style="background-color: aliceblue">
+              <tr style="background-color: #990033">
                 <th class="text-center" contenteditable="true"></th>
                 <th class="text-center labelle" contenteditable="true">1</th>
                 <th class="text-center labelle" contenteditable="true">2</th>
@@ -35,55 +35,55 @@
             </thead>
             <tbody>
               <tr>
-                <th class="text-center labelle" style="background-color: aliceblue">A</th>
-                <td class="pt-3-half" contenteditable="true">24</td>
-                <td class="pt-3-half" contenteditable="true">22</td>
-                <td class="pt-3-half" contenteditable="true">61</td>
-                <td class="pt-3-half" contenteditable="true">49</td>
-                <td class="pt-3-half" contenteditable="true">83</td>
+                <th class="text-center labelle" style="background-color: #990033">A</th>
+                <td class="pt-3-half" contenteditable="true">40</td>
+                <td class="pt-3-half" contenteditable="true">60</td>
+                <td class="pt-3-half" contenteditable="true">45</td>
+                <td class="pt-3-half" contenteditable="true">30</td>
+                <td class="pt-3-half" contenteditable="true">45</td>
+                <td class="pt-3-half" contenteditable="true">50</td>
+                <th class="pt-3-half a" contenteditable="true">250</th>
+              </tr>
+              <tr>
+                <th class="text-center labelle" style="background-color: #990033">B</th>
                 <td class="pt-3-half" contenteditable="true">35</td>
-                <th class="pt-3-half a" contenteditable="true">18</th>
+                <td class="pt-3-half" contenteditable="true">15</td>
+                <td class="pt-3-half" contenteditable="true">35</td>
+                <td class="pt-3-half" contenteditable="true">35</td>
+                <td class="pt-3-half" contenteditable="true">25</td>
+                <td class="pt-3-half" contenteditable="true">25</td>
+                <th class="pt-3-half a" contenteditable="true">300</th>
               </tr>
               <tr>
-                <th class="text-center labelle" style="background-color: aliceblue">B</th>
-                <td class="pt-3-half" contenteditable="true">23</td>
-                <td class="pt-3-half" contenteditable="true">39</td>
-                <td class="pt-3-half" contenteditable="true">78</td>
-                <td class="pt-3-half" contenteditable="true">28</td>
-                <td class="pt-3-half" contenteditable="true">65</td>
-                <td class="pt-3-half" contenteditable="true">42</td>
-                <th class="pt-3-half a" contenteditable="true">32</th>
-              </tr>
-              <tr>
-                  <th class="text-center labelle" style="background-color: aliceblue">C</th>
-                  <td class="pt-3-half" contenteditable="true">67</td>
-                  <td class="pt-3-half" contenteditable="true">56</td>
-                  <td class="pt-3-half" contenteditable="true">92</td>
-                  <td class="pt-3-half" contenteditable="true">24</td>
-                  <td class="pt-3-half" contenteditable="true">53</td>
-                  <td class="pt-3-half" contenteditable="true">54</td>
-                  <th class="pt-3-half a" contenteditable="true">14</th>
+                  <th class="text-center labelle" style="background-color: #990033">C</th>
+                  <td class="pt-3-half" contenteditable="true">30</td>
+                  <td class="pt-3-half" contenteditable="true">25</td>
+                  <td class="pt-3-half" contenteditable="true">45</td>
+                  <td class="pt-3-half" contenteditable="true">55</td>
+                  <td class="pt-3-half" contenteditable="true">15</td>
+                  <td class="pt-3-half" contenteditable="true">55</td>
+                  <th class="pt-3-half a" contenteditable="true">100</th>
                 </tr>
                 <tr>
-                  <th class="text-center labelle" style="background-color: aliceblue">D</th>
-                  <td class="pt-3-half" contenteditable="true">71</td>
-                  <td class="pt-3-half" contenteditable="true">43</td>
-                  <td class="pt-3-half" contenteditable="true">91</td>
-                  <td class="pt-3-half" contenteditable="true">67</td>
+                  <th class="text-center labelle" style="background-color: #990033">D</th>
+                  <td class="pt-3-half" contenteditable="true">30</td>
                   <td class="pt-3-half" contenteditable="true">40</td>
-                  <td class="pt-3-half" contenteditable="true">49</td>
-                  <th class="pt-3-half a" contenteditable="true">9</th>
+                  <td class="pt-3-half" contenteditable="true">55</td>
+                  <td class="pt-3-half" contenteditable="true">10</td>
+                  <td class="pt-3-half" contenteditable="true">10</td>
+                  <td class="pt-3-half" contenteditable="true">50</td>
+                  <th class="pt-3-half a" contenteditable="true">450</th>
                 </tr>
             </tbody>
             <tfoot>
               <tr>
-                <th class="text-center" style="background-color: aliceblue"></th>
-                <th class="pt-3-half b" contenteditable="true" style="background-color: rgb(250, 252, 253)">9</th>
-                <th class="pt-3-half b" contenteditable="true" style="background-color: rgb(250, 252, 253)">11</th>
-                <th class="pt-3-half b" contenteditable="true" style="background-color: rgb(250, 252, 253)">28</th>
-                <th class="pt-3-half b" contenteditable="true" style="background-color: rgb(250, 252, 253)">6</th>
-                <th class="pt-3-half b" contenteditable="true" style="background-color: rgb(250, 252, 253)">14</th>
-                <th class="pt-3-half b" contenteditable="true" style="background-color: rgb(250, 252, 253)">5</th>
+                <th class="text-center" style="background-color: #990033"></th>
+                <th class="pt-3-half b" contenteditable="true" style="background-color: rgb(250, 252, 253)">200</th>
+                <th class="pt-3-half b" contenteditable="true" style="background-color: rgb(250, 252, 253)">150</th>
+                <th class="pt-3-half b" contenteditable="true" style="background-color: rgb(250, 252, 253)">350</th>
+                <th class="pt-3-half b" contenteditable="true" style="background-color: rgb(250, 252, 253)">100</th>
+                <th class="pt-3-half b" contenteditable="true" style="background-color: rgb(250, 252, 253)">200</th>
+                <th class="pt-3-half b" contenteditable="true" style="background-color: rgb(250, 252, 253)">100</th>
                 <th class="pt-3-half" style="background-color: rgb(250, 252, 253)"></th>
               </tr>
             </tfoot>
@@ -96,7 +96,7 @@
           
           <table name="tableBaseSolution"  id="tableBaseSolution" class="table table-bordered table-responsive-sm text-center">
             <thead>
-                <tr style="background-color: aliceblue">
+                <tr style="background-color: #990033">
                   <th class="text-center"></th>
                   <th class="text-center">1<br></th>
                   <th class="text-center">2</th>
@@ -109,7 +109,7 @@
             </thead>
             <tbody>
               <tr>
-                <th class="text-center" style="background-color: aliceblue">A</th>
+                <th class="text-center" style="background-color: #990033">A</th>
                 <td class="pt-3-half"></td>
                 <td class="pt-3-half"></td>
                 <td class="pt-3-half"></td>
@@ -119,7 +119,7 @@
                 <!-- <td class="pt-3-half"></td> -->
               </tr>
               <tr>
-                <th class="text-center" style="background-color: aliceblue">B</th>
+                <th class="text-center" style="background-color: #990033">B</th>
                 <td class="pt-3-half"></td>
                 <td class="pt-3-half"></td>
                 <td class="pt-3-half"></td>
@@ -129,7 +129,7 @@
                 <!-- <td class="pt-3-half"></td> -->
               </tr>
               <tr>
-                  <th class="text-center" style="background-color: aliceblue">C</th>
+                  <th class="text-center" style="background-color: #990033">C</th>
                   <td class="pt-3-half"></td>
                   <td class="pt-3-half"></td>
                   <td class="pt-3-half"></td>
@@ -139,7 +139,7 @@
                   <!-- <td class="pt-3-half"></td> -->
                 </tr>
                 <tr>
-                  <th class="text-center" style="background-color: aliceblue">D</th>
+                  <th class="text-center" style="background-color: #990033">D</th>
                   <td class="pt-3-half"></td>
                   <td class="pt-3-half"></td>
                   <td class="pt-3-half"></td>
@@ -151,7 +151,7 @@
             </tbody>
             <!-- <tfoot>
               <tr>
-                <th class="text-center" style="background-color: aliceblue"></th>
+                <th class="text-center" style="background-color: #990033"></th>
                 <td class="pt-3-half" style="background-color: rgb(250, 252, 253)"></td>
                 <td class="pt-3-half" style="background-color: rgb(250, 252, 253)"></td>
                 <td class="pt-3-half" style="background-color: rgb(250, 252, 253)"></td>
@@ -167,15 +167,9 @@
           
         </div>
        
-        <div id="graph-container" class="col-lg-3" style="border: solid 1px blue">
-          <div id="myGraph" class="mx-0"  style="width:100%; height:500px">
-          </div>
-        </div>
-        
-
         <div id="gain" class="col-lg-3" style="width:100%; height:500px">
           <div class="card"  style="width: 100%; height: 100%;">
-            <h4 class="card-header text-center font-weight-bold py-1"> CALCUL DES GAINS</h4>
+            <p class="card-header bg-warning text-white text-center font-weight-bold py-1"> CALCUL DES GAINS</p>
             <div class="card-body col" id="showListeGains">
               <ul class="list-group" id="listeGains">
               </ul>
@@ -183,12 +177,18 @@
           </div>
         </div>
 
+        <div id="graph-container" class="col-lg-3" style="border: solid 1px blue">
+          <div id="myGraph" class="mx-0" style="width:100%; height:500px">
+          </div>
+        </div>
+
       </div>
-      <div id="divInsert" class="card-footer text-center py-2" name="divInsert">
+      <div id="divInsert" class="card-footer text-center text-white bg-success py-2" name="divInsert">
           <button id="minitabBtn" name="minitabBtn" class="btn btn-primary">MINITAB</button>
           <button id="getGraphBtn" name="getGraphBtn" class="btn btn-primary" style="display: none;">ETABLIR LE GRAPH</button>
           <button id="calculGainBtn" name="calculGainBtn" class="btn btn-primary" style="display: none;">CALCULER GAINS</button>
           <button id="appliquerGain" class="btn btn-success mx-auto" style="display: none;">APPLIQUER LE GAIN</button>
+          <p>Copyright Rojo_nantenaina</p>
       </div>
 
 
